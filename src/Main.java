@@ -2,22 +2,21 @@ import java.time.LocalDate;
 
 public class Main {
     // Task 1
-    public static int isLeapYear(int year) {
-        if (year > 1584 && year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
-            return 1;}
-        return 0;
+    public static boolean checkLeapYear(int year) {
+        return (year > 1584 && year % 400 == 0 || (year % 4 == 0 && year % 100 != 0));
     }
     //Task 2
-    public static int isClientDeviceActual(int clientOS, int clientDeviceYear) {
+    public static void isClientDeviceActual(int clientOS, int clientDeviceYear) {
         int currentYear = LocalDate.now().getYear();
+
         if (clientOS == 0 && clientDeviceYear >= currentYear) {
-            return 1;
-        } else if (clientOS == 0 && clientDeviceYear < currentYear) {
-            return 2;
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+            } else if (clientOS == 0 && clientDeviceYear < currentYear) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
         } else if (clientOS == 1 && clientDeviceYear >= currentYear) {
-            return 3;
+            System.out.println("Установите  версию приложения для Android по ссылке.");
         } else {
-            return 4;
+            System.out.println("Установите  облегченную версию приложения для Android по ссылке.");
         }
     }
     // Task 3
@@ -37,35 +36,24 @@ public class Main {
 // Task 1
         System.out.println("Task 1");
 
-        int year = 2021;
-        int leapYear = isLeapYear(year);
-        if (leapYear == 1) {
+        int year = 2021
+                ;
+        boolean leapYear = checkLeapYear(year);
+        if (leapYear) {
             System.out.println(year + " год - високосный год");
-        } else {
-            System.out.println(year + "год - не високосный год");
         }
+            System.out.println(year + "год - не високосный год");
+
 
 // Task 2
         System.out.println("Task 2");
 
 
         int clientOS = 1;
-        int clientDeviceYear = 2024;
-        if (clientOS == 0 || clientOS == 1) {
+        int clientDeviceYear = 2014;
 
-            int clientDevice = isClientDeviceActual(clientOS, clientDeviceYear);
-            if (clientDevice == 1) {
-                System.out.println("Установите версию приложения для iOS по ссылке.");
-            } else if (clientDevice == 2) {
-                System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
-            } else if (clientDevice == 3) {
-                System.out.println("Установите  версию приложения для Android по ссылке.");
-            } else {
-                System.out.println("Установите облегченную версию для  Android по ссылке.");
-            }
-        } else {
-            System.out.println("Извините. Ваше устройство не обслуживается");
-        }
+        isClientDeviceActual(clientOS, clientDeviceYear);
+
 // Task 3
         System.out.println("Task 3");
 
